@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="https://github.com/mate-desktop/mate-desktop/raw/master/icons/16x16/apps/mate-desktop.png" />
+  <title>mate-desktop Code Analyzer results</title>
+</head>
+<body>
+<h1>
+  <a href="https://github.com/mate-desktop">mate-desktop</a>/<a href="https://github.com/mate-desktop/mate-desktop">mate-desktop</a> Static analyzer results
+</h1>
+  <a href="https://github.com/mate-desktop/mate-desktop" title="Github"><i class="fa fa-github fa-2x"></i>GitHub</a>
+  <a href="https://travis-ci.org/mate-desktop/mate-desktop/builds/598193739" title="Travis CI"><img src="https://travis-ci.org/mate-desktop/mate-desktop.svg?branch=master" alt="Build Status" /></a>
+<hr/>
+Commit: <a href="https://github.com/mate-desktop/mate-desktop/commit/09cd84a80d0c9c63f2580f501f9bd2dc5f1e97e1">09cd84a80d0c9c63f2580f501f9bd2dc5f1e97e1</a><br/>
+Compare: <a href="https://github.com/mate-desktop/mate-desktop/compare/33ed1fb1a6f3...09cd84a80d0c">33ed1fb1a6f3...09cd84a80d0c</a><br/>
+Branch: <a href="https://github.com/mate-desktop/mate-desktop/tree/release-year">release-year</a><br/>
+Time: 2019-10-15 15:01:36+00:00<br/>
+Messages:<br/>
+<pre>
+build: introduce RELEASE_YEAR variable for mate-about dialog
+
+Test 1:
+  ./autogen.sh --prefix=/usr
+  cat mate-about/mate-about.h
+  make && sudo make install
+
+Test 2:
+  mkdir builddir
+  meson setup builddir --prefix=/usr
+  cat builddir/mate-about/mate-about.h
+  sudo ninja -C builddir install
+</pre>
+<hr/>
+<ul>
+<li><a href="2019-10-15-150136-7115-cppcheck@09cd84a80d0c_release-year">2019-10-15-150136-7115-cppcheck@09cd84a80d0c_release-year</a></li>
+<li><a href="2019-10-15-145819-7075-1@09cd84a80d0c_release-year">2019-10-15-145819-7075-1@09cd84a80d0c_release-year</a></li>
+<li><a href=2019-10-13-224659-2574-cppcheck@33ed1fb1a6f3_release-year>2019-10-13-224659-2574-cppcheck@33ed1fb1a6f3_release-year</a></li>
+<li><a href=2019-10-13-224348-7026-1@33ed1fb1a6f3_release-year>2019-10-13-224348-7026-1@33ed1fb1a6f3_release-year</a></li>
+<li><a href=2019-10-06-125625-5448-cppcheck@84f4c42af3ff_master>2019-10-06-125625-5448-cppcheck@84f4c42af3ff_master</a></li>
+<li><a href=2019-10-06-125304-6969-1@84f4c42af3ff_master>2019-10-06-125304-6969-1@84f4c42af3ff_master</a></li>
+<li><a href=2019-10-06-123733-5811-cppcheck@84f4c42af3ff_travis_debian_testing>2019-10-06-123733-5811-cppcheck@84f4c42af3ff_travis_debian_testing</a></li>
+<li><a href=2019-10-06-123419-6968-1@84f4c42af3ff_travis_debian_testing>2019-10-06-123419-6968-1@84f4c42af3ff_travis_debian_testing</a></li>
+<li><a href=2019-10-05-191541-3625-cppcheck@b47a5bd2c8b0_master>2019-10-05-191541-3625-cppcheck@b47a5bd2c8b0_master</a></li>
+<li><a href=2019-10-05-191223-6971-1@b47a5bd2c8b0_master>2019-10-05-191223-6971-1@b47a5bd2c8b0_master</a></li>
+<li><a href=2019-09-05-021148-8928-cppcheck@ad46fc340f1b_master>2019-09-05-021148-8928-cppcheck@ad46fc340f1b_master</a></li>
+<li><a href=2019-09-05-020836-6964-1@ad46fc340f1b_master>2019-09-05-020836-6964-1@ad46fc340f1b_master</a></li>
+<li><a href=2019-09-05-011733-8465-cppcheck@ad46fc340f1b_clang-UnreachableCode>2019-09-05-011733-8465-cppcheck@ad46fc340f1b_clang-UnreachableCode</a></li>
+<li><a href=2019-09-05-011417-6969-1@ad46fc340f1b_clang-UnreachableCode>2019-09-05-011417-6969-1@ad46fc340f1b_clang-UnreachableCode</a></li>
+<li><a href=2019-08-12-071015-6210-cppcheck@3b374c64d794_master>2019-08-12-071015-6210-cppcheck@3b374c64d794_master</a></li>
+<li><a href=2019-08-12-070658-7034-1@3b374c64d794_master>2019-08-12-070658-7034-1@3b374c64d794_master</a></li>
+<li><a href=2019-08-12-050925-8362-cppcheck@25b957de3fa7_fix-meson>2019-08-12-050925-8362-cppcheck@25b957de3fa7_fix-meson</a></li>
+<li><a href=2019-08-12-050609-7034-1@25b957de3fa7_fix-meson>2019-08-12-050609-7034-1@25b957de3fa7_fix-meson</a></li>
+<li><a href=2019-08-11-162514-7804-cppcheck@ed6b8f19276d_v1.23.2>2019-08-11-162514-7804-cppcheck@ed6b8f19276d_v1.23.2</a></li>
+<li><a href=2019-08-11-162159-7039-1@ed6b8f19276d_v1.23.2>2019-08-11-162159-7039-1@ed6b8f19276d_v1.23.2</a></li>
+</ul>
+</body>
+</html>

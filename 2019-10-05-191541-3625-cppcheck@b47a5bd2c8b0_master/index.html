@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - mate-desktop</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script language="javascript">
+      function getStyle(el,styleProp) {
+        if (el.currentStyle)
+          var y = el.currentStyle[styleProp];
+        else if (window.getComputedStyle)
+          var y = document.defaultView.getComputedStyle(el,null).getPropertyValue(styleProp);
+        return y;
+      }
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+        if (el.style.display == "block") {
+          el.style.display = "none";
+          mark.innerHTML = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.innerHTML = "[-]";
+        }
+      }
+      function init_expandables() {
+        var elts = document.getElementsByClassName("expandable");
+        for (var i = 0; i < elts.length; i++) {
+          var el = elts[i];
+          var clickable = el.getElementsByTagName("span")[0];
+          var marker = clickable.getElementsByClassName("marker")[0];
+          var content = el.getElementsByClassName("content")[0];
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.onclick = toggle;
+        }
+      }
+      function set_class_display(c, st) {
+        var elements = document.querySelectorAll('.' + c),
+            len = elements.length;
+        for (i = 0; i < len; i++) {
+            elements[i].style.display = st;
+        }
+      }
+      function toggle_class_visibility(id) {
+        var box = document.getElementById(id);
+        set_class_display(id, box.checked ? '' : 'none');
+      }
+      function toggle_all(){
+        var elts = document.getElementsByTagName("input");
+        for (var i = 1; i < elts.length; i++) {           
+          var el = elts[i];
+          el.checked ? el.checked=false : el.checked=true;
+          toggle_class_visibility(el.id);        
+        }            
+      }
+
+    </script>
+  </head>
+  <body onload="init_expandables()">
+      <div id="header">
+        <h1>Cppcheck report - mate-desktop:  </h1>
+      </div>
+      <div id="menu_index">
+       <p id="filename"><a href="index.html">Defect summary;</a> </p>
+       <table>           <tr><th>Show</th><th>#</th><th>Defect ID</th></tr><label><input type="checkbox" onclick="toggle_all()" checked/> Toggle all</label>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='varFuncNullUB' name='varFuncNullUB' checked></td><td>50</td><td>varFuncNullUB</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='variableScope' name='variableScope' checked></td><td>40</td><td>variableScope</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='shadowVar' name='shadowVar' checked></td><td>4</td><td>shadowVar</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unusedVariable' name='unusedVariable' checked></td><td>3</td><td>unusedVariable</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='duplicateCondition' name='duplicateCondition' checked></td><td>1</td><td>duplicateCondition</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='knownConditionTrueFalse' name='knownConditionTrueFalse' checked></td><td>1</td><td>knownConditionTrueFalse</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='missingInclude' name='missingInclude' checked></td><td>1</td><td>missingInclude</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='selfAssignment' name='selfAssignment' checked></td><td>1</td><td>selfAssignment</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unreadVariable' name='unreadVariable' checked></td><td>1</td><td>unreadVariable</td></tr>           <tr><td></td><td>102</td><td>total</td></tr>       </table>       <a href="stats.html">Statistics</a></p>
+      </div>
+      <div id="content_index">
+       <table>
+       <tr><th>Line</th><th>Id</th><th>CWE</th><th>Severity</th><th>Message</th></tr>
+       <tr><td colspan='5'><a href='13.html'></a></td></tr>
+         <tr class="missingInclude"><td></td><td>missingInclude</td><td></td><td>information</td><td>Cppcheck cannot find all the include files (use --check-config for details)</td></tr>
+       <tr><td colspan='5'><a href='0.html'>libmate-desktop/display-name.c</a></td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-196">196</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'code' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-196">196</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'name' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='1.html'>libmate-desktop/mate-bg.c</a></td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-713">713</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'format' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-714">714</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'format_name' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-1406">1406</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'thumb' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-1451">1451</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'gdkdisplay' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-1453">1453</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'cr' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-1543">1543</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'result' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-1546">1546</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'gdkdisplay' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-1927">1927</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'format' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-2100">2100</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'file' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-2101">2101</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'info' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-2479">2479</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'a' can be reduced.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2842">2842</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2845">2845</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2848">2848</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2851">2851</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2854">2854</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2857">2857</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2860">2860</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2861">2861</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2867">2867</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2868">2868</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2885">2885</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2886">2886</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2894">2894</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="1.html#line-2911">2911</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-3030">3030</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 't' can be reduced.</td></tr>
+       <tr class="shadowVar"><td><a href="1.html#line-3066">3066</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable 'len' shadows outer variable</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-3099">3099</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'orig' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-3217">3217</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'thumb' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='2.html'>libmate-desktop/mate-colorbutton.c</a></td></tr>
+       <tr class="variableScope"><td><a href="2.html#line-236">236</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'data' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='3.html'>libmate-desktop/mate-colorsel.c</a></td></tr>
+       <tr class="variableScope"><td><a href="3.html#line-1844">1844</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'toplevel' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='4.html'>libmate-desktop/mate-desktop-item.c</a></td></tr>
+       <tr class="variableScope"><td><a href="4.html#line-1758">1758</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'real_argv' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="4.html#line-1762">1762</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'vector_list' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="4.html#line-1768">1768</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'new_exec' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="4.html#line-2331">2331</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'exec' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="4.html#line-3153">3153</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 's' can be reduced.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3172">3172</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3174">3174</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3175">3175</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3176">3176</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3178">3178</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3180">3180</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3182">3182</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3183">3183</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3185">3185</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3186">3186</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3187">3187</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3188">3188</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3189">3189</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3190">3190</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3191">3191</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3192">3192</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3193">3193</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3194">3194</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3195">3195</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3196">3196</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3198">3198</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3200">3200</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="4.html#line-3202">3202</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr><td colspan='5'><a href='5.html'>libmate-desktop/mate-desktop-thumbnail.c</a></td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-340">340</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'animation' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-615">615</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'thumb' can be reduced.</td></tr>
+       <tr class="duplicateCondition"><td><a href="5.html#line-804">804</a></td><td>duplicateCondition</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The if condition is the same as the previous if condition</td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-1177">1177</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'expanded_script' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-1182">1182</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'scale' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='6.html'>libmate-desktop/mate-desktop-utils.c</a></td></tr>
+       <tr class="knownConditionTrueFalse"><td><a href="6.html#line-138">138</a></td><td>knownConditionTrueFalse</td><td><a href='https://cwe.mitre.org/data/definitions/571.html'>571</a></td><td>style</td><td >Condition 'check==NULL' is always true</td></tr>
+       <tr><td colspan='5'><a href='7.html'>libmate-desktop/mate-hsv.c</a></td></tr>
+       <tr class="selfAssignment"><td><a href="7.html#line-357">357</a></td><td>selfAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>warning</td><td >Redundant assignment of '*v' to itself.</td></tr>
+       <tr class="variableScope"><td><a href="7.html#line-778">778</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'p' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="7.html#line-920">920</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'p' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='8.html'>libmate-desktop/mate-languages.c</a></td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-527">527</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'linep' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-718">718</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'translated_name' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='9.html'>libmate-desktop/mate-rr-config.c</a></td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-271">271</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-278">278</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-283">283</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-289">289</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-295">295</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-301">301</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-307">307</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-313">313</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-319">319</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-325">325</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-344">344</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-351">351</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="varFuncNullUB"><td><a href="9.html#line-358">358</a></td><td>varFuncNullUB</td><td><a href='https://cwe.mitre.org/data/definitions/475.html'>475</a></td><td>portability</td><td >Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.</td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-1233">1233</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-1291">1291</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'display' can be reduced.</td></tr>
+       <tr class="shadowVar"><td><a href="9.html#line-1549">1549</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable 'info' shadows outer variable</td></tr>
+       <tr><td colspan='5'><a href='10.html'>libmate-desktop/mate-rr.c</a></td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-246">246</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'output' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-247">247</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'crtc' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-248">248</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'mode' can be reduced.</td></tr>
+       <tr class="shadowVar"><td><a href="10.html#line-379">379</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable 'crtc' shadows outer variable</td></tr>
+       <tr class="shadowVar"><td><a href="10.html#line-389">389</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable 'output' shadows outer variable</td></tr>
+       <tr class="unusedVariable"><td><a href="10.html#line-671">671</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: event_base</td></tr>
+       <tr class="unusedVariable"><td><a href="10.html#line-672">672</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: ignore</td></tr>
+       <tr class="unreadVariable"><td><a href="10.html#line-916">916</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'priv' is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-1730">1730</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='11.html'>libmate-desktop/mate-thumbnail-pixbuf-utils.c</a></td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-57">57</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 's_x1' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-57">57</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 's_y2' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-58">58</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 's_xfrac' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='12.html'>mate-about/mate-about.c</a></td></tr>
+       <tr class="unusedVariable"><td><a href="12.html#line-35">35</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: window</td></tr>
+       </table>
+      </div>
+      <div id="footer">
+        <p>
+         Cppcheck 1.88 - a tool for static C/C++ code analysis</br>
+         </br>
+         Internet: <a href="http://cppcheck.net">http://cppcheck.net</a></br>
+         IRC: <a href="irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a></br>
+        <p>
+      </div>
+  </body>
+</html>
